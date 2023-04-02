@@ -2,7 +2,8 @@
 #define monty_h
 
 #include <stdio.h>
-//(include rest of header files)
+#include <stdlib.h>
+#include <string.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -34,6 +35,8 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-//include prototypes here
-
+char** read_file(const char* filename, int* num_lines);
+void free_lines(char** lines, int num_lines);
+void execute_lines(char** lines, int num_lines);
+int main(int argc, char* argv[]);
 #endif
