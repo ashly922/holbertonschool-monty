@@ -7,6 +7,11 @@
 #include <unistd.h>
 #include <stdbool.h>
 #include <ctype.h>
+#include <math.h>
+#include <stddef.h>
+#include <stdarg.h>
+
+extern char *value;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -38,8 +43,15 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-char** read_file(const char* filename, int* num_lines);
-void free_lines(char** lines, int num_lines);
-void execute_lines(char** lines, int num_lines);
-int main(int argc, char* argv[]);
+void freedom(char *buffer, stack_t **stack);
+void (*op_func(char *buff))(stack_t **stack, unsigned int line_number);
+char **split(char *buffer, char *delim);
+int free_string_list(char **list);
+void _push(stack_t **stack, unsigned int line_number);
+void _pall(stack_t **stack, unsigned int line_number);
+void _pint(stack_t **stack, unsigned int line_number);
+void _pop(stack_t **stack, unsigned int line_number);
+void _swap(stack_t **stack, unsigned int line_number);
+void _add(stack_t **stack, unsigned int line_number);
+void _nop(stack_t **stack, unsigned int line_number);
 #endif
