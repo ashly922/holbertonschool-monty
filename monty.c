@@ -82,10 +82,11 @@ void free_lines(char** lines, int num_lines)
  */
 void execute_lines(char** lines, int num_lines)
 {
-	int i;
+	int i= 0;
+	char* arg;
 	int data = atoi(arg);
 	int lines_num = i + 1;
-	char* token = strtok(lines_num, " ");
+	char* token = strtok(lines, " ");
 
 	for (i = 0; i < num_lines; i++)
 	{
@@ -115,6 +116,8 @@ void execute_lines(char** lines, int num_lines)
 				exit(EXIT_FAILURE);
 			}
 
+			int top = 0;
+			int line_number = 0;
 			push(&top, data, line_number);
 		}
 
