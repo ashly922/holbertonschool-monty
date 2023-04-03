@@ -6,10 +6,10 @@
  */
 char** read_file(const char* filename, int* num_lines)
 {
+	int count = 0;
 	char buffer[MAX_LINE_LENGTH];
 	char** lines = (char**)malloc(count * sizeof(char*));
 	int i = 0;
-	count = 0;
 	FILE* fp = fopen(filename, "r");
 
 	if (fp == NULL)
@@ -58,7 +58,9 @@ char** read_file(const char* filename, int* num_lines)
  */
 void free_lines(char** lines, int num_lines)
 {
-	for (int i = 0; i < num_lines; i++)
+	int i;
+
+	for (i = 0; i < num_lines; i++)
 	{
 		free(lines[i]);
 	}
@@ -70,11 +72,12 @@ void free_lines(char** lines, int num_lines)
  */
 void execute_lines(char** lines, int num_lines)
 {
+	int i;
 	int data = atoi(arg);
 	int lines_num = i + 1;
 	char* token = strtok(lines_num, " ");
 
-	for (int i = 0; i < num_lines; i++)
+	for (i = 0; i < num_lines; i++)
 	{
 		char* line = lines[i];
 
@@ -128,8 +131,7 @@ int main(int argc, char* argv[])
 		exit(EXIT_FAILURE);
 	}
 
-	const
-		char* filename = argv[1];
+	char* filename = argv[1];
 	int num_lines;
 	char** lines = read_file(filename, &num_lines);
 
