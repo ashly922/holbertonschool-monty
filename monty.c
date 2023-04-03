@@ -2,6 +2,13 @@
 
 #define MAX_LINE_LENGTH 1024
 /**
+ * read_file - fuction takes a filename as input, opens and reads its contents
+ * and returns it as an array of strings with each string representing a
+ * single line.
+ * @filename - the name of the file to read
+ * @num_lines - pointer to an integer that will stores the number of lines
+ *
+ * Return: An Array of strings Representing the lines in the file
  *
  */
 char** read_file(const char* filename, int* num_lines)
@@ -11,36 +18,32 @@ char** read_file(const char* filename, int* num_lines)
 	char** lines = (char**)malloc(count * sizeof(char*));
 	int i = 0;
 	FILE* fp = fopen(filename, "r");
-
 	if (fp == NULL)
 	{
 		printf("Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
 	}
-	
+
 	while (fgets(buffer, MAX_LINE_LENGTH, fp))
 	{
 		count++;
 	}
-	
 	if(lines == NULL)
 	{
 		printf("Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-
 	rewind(fp);
 
 	while (fgets(buffer, MAX_LINE_LENGTH, fp))
 	{
 		int len = strlen(buffer);
-
 		if (buffer[len-1] == '\n')
 		{
 			buffer[len-1] = '\0';
 		}
-		lines[i] = (char*) malloc((len+1) * sizeof(char));
 
+		lines[i] = (char*) malloc((len+1) * sizeof(char));
 		if (lines[i] == NULL)
 		{
 			printf("Error: malloc failed\n");
@@ -55,6 +58,10 @@ char** read_file(const char* filename, int* num_lines)
 }
 /**
  *
+ *
+ *
+ *
+ *
  */
 void free_lines(char** lines, int num_lines)
 {
@@ -68,6 +75,9 @@ void free_lines(char** lines, int num_lines)
 }
 
 /**
+ *
+ *
+ *
  *
  */
 void execute_lines(char** lines, int num_lines)
@@ -121,6 +131,9 @@ void execute_lines(char** lines, int num_lines)
 }
 
 /**
+ *
+ *
+ *
  *
  */
 int main(int argc, char* argv[])
