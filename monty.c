@@ -29,7 +29,6 @@ int main(int argc, char *argv[])
 	int line_number = 0;
 	void (*opcode_func)(stack_t **stack, unsigned int line_number);
 	stack_t *head = NULL;
-	char *value = NULL;
 
 	if (argc != 2)
 	{
@@ -48,7 +47,6 @@ int main(int argc, char *argv[])
 		token = strtok(buffer, "\n\t $");
 		if (!token)
 			continue;
-		value = strtok(NULL, "\n\t $");
 		opcode_func = op_func(token);
 		if (!opcode_func)
 		{
@@ -61,5 +59,5 @@ int main(int argc, char *argv[])
 	}
 	free_list(head);
 	fclose(fp);
-	return (0);
+	return (EXIT_SUCCESS);
 }
